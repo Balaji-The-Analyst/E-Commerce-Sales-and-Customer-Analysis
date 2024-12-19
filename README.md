@@ -218,7 +218,7 @@ plt.show()
 ## How to Run
 1. Clone the repository:
    ```bash
-   git clone <[repository-url](https://github.com/Balaji-The-Analyst/E-Commerce-Sales-and-Customer-Analysis/blob/main/README.md)>
+   git clone <https://github.com/Balaji-The-Analyst/E-Commerce-Sales-and-Customer-Analysis>
    ```
 2. Install dependencies:
    ```bash

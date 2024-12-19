@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/3d13e5c7-ca68-40e4-a5ff-d9adf1161161)# E-Commerce Sales & Customer Analysis
+# E-Commerce Sales & Customer Analysis
 
 ## Overview
 This project involves the analysis of the Olist e-commerce dataset, which contains detailed transactional, customer, product, and review data. The goal is to perform an end-to-end analysis, simulating a real-world data analytics project, and provide actionable insights for improving business performance.

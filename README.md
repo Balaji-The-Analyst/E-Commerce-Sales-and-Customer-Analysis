@@ -218,7 +218,7 @@ plt.show()
 ## How to Run
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone <[repository-url](https://github.com/Balaji-The-Analyst/E-Commerce-Sales-and-Customer-Analysis/blob/main/README.md)>
    ```
 2. Install dependencies:
    ```bash
@@ -246,6 +246,6 @@ The final analysis provides detailed visuals, insights, and recommendations that
 ---
 
 ## Acknowledgments
-- **Dataset:** [Olist E-commerce Dataset](https://www.kaggle.com/datasets/olistbr)
+- **Dataset:** [Olist E-commerce Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
 For more detailed information about this project, please refer to the Python file or the PDF version available in the repository.

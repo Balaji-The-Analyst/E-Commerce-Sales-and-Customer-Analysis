@@ -71,7 +71,8 @@ plt.ylabel('Price')
 plt.show()
 ```
 
-![Review Score Distribution](https://github.com/user-attachments/assets/22b22069-0eed-4174-93ef-88e92dc30fbb)
+![Relationship between review scores and price](https://github.com/user-attachments/assets/a8fa65b6-4bce-4ecd-b410-85826222e7e6)
+
 
 ### 3. **Customer Lifetime Value (CLV)**
 - Calculated total revenue, order frequency, and average order value for each customer.

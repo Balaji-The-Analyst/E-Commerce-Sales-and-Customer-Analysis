@@ -1,4 +1,4 @@
-# E-Commerce Sales & Customer Analysis
+![image](https://github.com/user-attachments/assets/3d13e5c7-ca68-40e4-a5ff-d9adf1161161)# E-Commerce Sales & Customer Analysis
 
 ## Overview
 This project involves the analysis of the Olist e-commerce dataset, which contains detailed transactional, customer, product, and review data. The goal is to perform an end-to-end analysis, simulating a real-world data analytics project, and provide actionable insights for improving business performance.
@@ -44,10 +44,10 @@ To derive insights and recommendations for improving customer satisfaction, oper
   - Examined sales distribution, revealing that the majority of products are priced between $20 and $50, with some outliers in the high-end range.
 
 ```python
+# Example: Review Score Distribution
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Example: Review Score Distribution
 sns.countplot(x='review_score', data=reviews_data, palette='viridis')
 plt.title('Distribution of Review Scores')
 plt.xlabel('Review Score')
@@ -55,41 +55,42 @@ plt.ylabel('Count')
 plt.show()
 ```
 
-![Review Score Distribution](./visuals/review_score_distribution.png)
+![Review Score Distribution](https://github.com/user-attachments/assets/5f49f04a-ef79-42d6-a5e5-31aea131fb70)
+
 
 - **Bivariate Analysis:**
   - Investigated the relationship between **review scores and prices**, finding that higher-priced products tend to receive better ratings, possibly reflecting higher quality or expectations.
   - Explored the effect of **order status on delivery times**, showing that "canceled" orders often have longer processing times before cancellation, while "delivered" orders average **7 days** for completion.
 
 ```python
-# Example: Delivery Time by Order Status
-sns.boxplot(x='order_status', y='delivery_time', data=orders_data, palette='coolwarm')
-plt.title('Delivery Time by Order Status')
-plt.xlabel('Order Status')
-plt.ylabel('Delivery Time (Days)')
+# Example: Relationship between review scores and price
+sns.boxplot(x='review_score', y='price', data=final_data)
+plt.title('Review Score vs Product Price')
+plt.xlabel('Review Score')
+plt.ylabel('Price')
 plt.show()
 ```
 
-![Delivery Time by Order Status](./visuals/delivery_time_by_status.png)
+![Review Score Distribution](https://github.com/user-attachments/assets/22b22069-0eed-4174-93ef-88e92dc30fbb)
 
 ### 3. **Customer Lifetime Value (CLV)**
 - Calculated total revenue, order frequency, and average order value for each customer.
 - Visualized top customers using bar charts and treemaps.
 
 ```python
-# Example: CLV Treemap
+# Example: CLV Treemap.
 import squarify
+sizes = top_customers['total_revenue']
+labels = top_customers['customer_id']
 
-# Mock Data Example for Treemap
-clv_data = {'Customer': ['A', 'B', 'C'], 'Revenue': [3000, 2000, 1500]}
-fig, ax = plt.subplots(figsize=(12, 8))
-squarify.plot(sizes=clv_data['Revenue'], label=clv_data['Customer'], alpha=0.8, color=sns.color_palette('viridis'))
-plt.title('Customer Revenue Contribution')
+plt.figure(figsize=(12, 6))
+squarify.plot(sizes=sizes, label=labels, alpha=0.8, color=sns.color_palette("viridis", len(sizes)))
+plt.title('Customer Revenue Distribution (Top 10)', fontsize=14)
 plt.axis('off')
 plt.show()
 ```
 
-![Customer Revenue Treemap](./visuals/customer_revenue_treemap.png)
+![Customer Revenue Treemap](https://github.com/user-attachments/assets/1b37e96d-a1b8-43cc-8035-2b1dba0ec1d8)
 
 - Segmented customers into tiers: High, Medium, and Low CLV.
 
@@ -109,12 +110,41 @@ plt.grid()
 plt.show()
 ```
 
-![Monthly Revenue Trends](./visuals/monthly_revenue_trends.png)
+![Monthly Revenue Trends](https://github.com/user-attachments/assets/54bc0c8c-759e-4d64-8e82-9d91a4339fcd)
+
+```python
+# Example: Identifying Underperforming Categories
+plt.figure(figsize=(12, 6))
+sns.scatterplot(data=category_performance, x='total_quantity', y='total_revenue', color='blue', alpha=0.6)
+sns.scatterplot(data=low_performance, x='total_quantity', y='total_revenue', color='red', label='Underperforming')
+plt.title('Revenue vs Quantity Sold (Product Categories)', fontsize=14)
+plt.xlabel('Total Quantity Sold', fontsize=12)
+plt.ylabel('Total Revenue', fontsize=12)
+plt.legend()
+plt.grid(axis='both', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()
+```
+
+![Scatter plot of Underperforming Categories](https://github.com/user-attachments/assets/a907824c-dde3-42f5-b63d-87b52e43cd66)
 
 ### 5. **Delivery Performance Analysis**
 - Measured actual delivery times and delays.
 - Assessed on-time delivery rates by product categories, finding that **bulky items like furniture had a 25% delay rate**, while smaller products performed better.
 - Visualized delivery performance trends using box plots and bar charts.
+  
+```python
+# Example: Distribution of Actual Delivery Times
+plt.figure(figsize=(8, 6))
+sns.boxplot(data=final_data, x='actual_delivery_time', color='skyblue')
+plt.title('Distribution of Actual Delivery Times', fontsize=14)
+plt.xlabel('Delivery Time (Days)', fontsize=12)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.show()
+```
+
+![Distribution of Actual Delivery Times](https://github.com/user-attachments/assets/f0eca072-4fbc-4b67-a634-793f58c181e1)
+  
 
 ### 6. **Customer Segmentation**
 - Conducted RFM (Recency, Frequency, Monetary) analysis.
@@ -124,10 +154,39 @@ plt.show()
   - Big Spenders
 - Visualized segment distributions and revenue contributions.
 
+```python
+# Example: Distribution of customer segments
+plt.figure(figsize=(10, 6))
+rfm['Customer_Segment'].value_counts().plot(kind='bar', color='skyblue')
+plt.title('Customer Segmentation', fontsize=14)
+plt.xlabel('Segment', fontsize=12)
+plt.ylabel('Number of Customers', fontsize=12)
+plt.xticks(rotation=45)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()
+
+```
+
+![Customer Segments](https://github.com/user-attachments/assets/ac56ed04-9e39-4961-9660-ee148d3b756d)
+
 ### 7. **Profitability and Cost Analysis**
 - Calculated profit margins for products and categories, identifying **high-margin products contributing 40% of profits**.
 - Summarized overall revenue, costs, and profit.
 - Visualized top-performing products and categories.
+
+```python
+# Example: category profitability
+plt.figure(figsize=(12, 6))
+sns.barplot(x='total_profit', y='product_category_name_english', data=category_profitability, palette='coolwarm')
+plt.title('Profitability by Product Category', fontsize=14)
+plt.xlabel('Total Profit', fontsize=12)
+plt.ylabel('Product Category', fontsize=12)
+plt.grid(axis='x', linestyle='--', alpha=0.7)
+plt.show()
+```
+
+![Product category profitability](https://github.com/user-attachments/assets/3a00b004-8881-477f-a5d5-7ff41f49f528)
 
 ---
 
@@ -187,3 +246,5 @@ The final analysis provides detailed visuals, insights, and recommendations that
 
 ## Acknowledgments
 - **Dataset:** [Olist E-commerce Dataset](https://www.kaggle.com/datasets/olistbr)
+
+For more detailed information about this project, please refer to the Python file or the PDF version available in the repository.
